@@ -1,0 +1,32 @@
+<!-- main/ticker_sentiment.html -->
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br />
+<div style="text-align: center;">
+    <h2>Ticker VS Ticker Sentiment Graph</h2>
+    <hr />
+</div>
+<!-- Display the interactive Plotly plot -->
+<div style="display: inline-block;">
+    {{ interactive_plot|safe }}
+</div>
+<table style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">Ticker</th>
+            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">Sentiment Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for k,v in z %}
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ k }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ v }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

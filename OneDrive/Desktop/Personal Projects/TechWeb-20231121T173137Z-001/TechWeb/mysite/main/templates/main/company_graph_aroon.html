@@ -1,0 +1,13 @@
+<!-- main/company_graph_aroon.html -->
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h2>{{ ticker }} {{ window|title }} Graph</h2>
+
+<!-- Display the interactive Plotly plot -->
+<div style="display: inline-block;">
+    {{ interactive_plot|safe }}
+</div>
+
+{% endblock %}

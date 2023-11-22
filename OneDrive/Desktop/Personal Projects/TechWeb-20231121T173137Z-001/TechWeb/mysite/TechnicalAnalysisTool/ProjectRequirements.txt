@@ -1,0 +1,1 @@
+Requirements: moving averages, RSI, MACD, OBV,  EMA and I want the stock screener to include sector, market cap, dividend yield and volatility 

@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% load extras %}
+
+{% block content %}
+    <br />
+    <br /> 
+    <h1 style="text-align: center;"></h1style>Welcome to Stratton OakFront Technical Analysis!</h1>
+    <hr />
+    <div style="text-align: center;">
+    <h4 style="display: inline;">Our Purpose: </h4>
+    <p style="display: inline;">Welcome to Stratton Oakfront! Our website is your go-to destination for comprehensive financial analysis and insights. Whether you're an investor, trader, or simply curious about the world of finance, we provide the tools and data you need to make informed decisions. Explore real-time stock information, technical indicators, historical data, and much more. Stratton Oakfront empowers you with the knowledge you need to navigate the financial landscape with confidence. Use the search bar below to filter for a ticker of your choice (provided that it's listed on the S&P 500!)</p>
+    </div>
+    <p style="margin-top: 20px;">
+      <br />
+      <h4 style="text-align: center;"> General News and Sentiment </h4>
+    </p>
+
+    <table style="border-collapse: collapse; width: 100%;">
+      <thead>
+          <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">title</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">url</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">authors</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">summary</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">topics</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">overall_sentiment_score</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">overall_sentiment_label</th>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">ticker_sentiment</th>
+          </tr>
+      </thead>
+      <tbody>
+      
+      {% for dic in news_and_sentiment_general %}
+      {% if forloop.counter0 < 15 %}
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ dic|get_index:'title' }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><a href="{{ dic|get_index:'url' }}">{{ dic|get_index:'url' }}</a></td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ dic|get_index:'authors'|get_index:0 }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ dic|get_index:'summary' }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><a href="topic_graph/{{ forloop.counter0 }}">{{ dic|get_index:'topics' }}</a></td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ dic|get_index:'overall_sentiment_score' }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ dic|get_index:'overall_sentiment_label' }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><a href="sentiment_graph/{{ forloop.counter0 }}">{{ dic|get_index:'ticker_sentiment' }}</a></td>
+        </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

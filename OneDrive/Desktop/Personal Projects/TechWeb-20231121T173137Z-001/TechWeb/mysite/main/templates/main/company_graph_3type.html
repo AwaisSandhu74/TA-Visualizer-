@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br />
+<div style="text-align: center;">
+    <h2>{{ ticker }} {{ window }} day {{ indicator_type|upper }} Graph</h2>
+    <hr />
+    <div style="display: inline-block;">
+        {{ interactive_plot|safe }}
+    </div>
+    <p style="margin-top: 20px;">
+        This graph illustrates the {{ indicator_type|upper }} values over a period of {{ window }} days for {{ ticker }}. The {{ indicator_type|upper }} indicator is a key tool for analyzing stock trends and market momentum. 
+        By tracking the {{ indicator_type|upper }} values, investors and traders can gain insights into potential buying or selling opportunities, as well as the overall strength of price movements.
+        The graph showcases the {{ indicator_type|upper }} values alongside the real upper, middle, and lower bands, offering a comprehensive view of {{ ticker }}'s trading patterns.
+        Utilizing historical stock data, this graph empowers users to make informed decisions in the dynamic world of stock trading.
+    </p>
+</div>
+{% endblock %}
